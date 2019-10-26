@@ -55,6 +55,7 @@ primitivify(
   v => typeof v === 'function' ? 'wee' : v)
 )
 // { a: 'wee' }
+```
 
 ### why
 
