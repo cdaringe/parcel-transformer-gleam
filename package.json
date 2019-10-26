@@ -1,0 +1,78 @@
+{
+  "devDependencies": {
+    "@types/lodash": "^4.14.144",
+    "@types/node": "^12.11.7",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
+    "ava": "^2.4.0",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier-standard": "^15.0.1",
+    "semantic-release-cli": "^5.2.1",
+    "standardx": "^5.0.0",
+    "typescript": "^3.6.4",
+    "semantic-release": "^15.13.27"
+  },
+  "name": "primitivify",
+  "description": "deep copy data keeping only primitives in plain array or object data structures",
+  "version": "0.0.0-development",
+  "main": "src/index.js",
+  "repository": "git@github.com:cdaringe/primitivify.git",
+  "author": "cdaringe <cdaringe@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "is-plain-object": "^3.0.0",
+    "lodash": ">=4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "ava && node test/test.import.js",
+    "format": "prettier-standard '{src,test,scripts}/**/*.{js,jsx,ts,tsx}'",
+    "lint": "standardx '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --fix",
+    "semantic-release": "semantic-release"
+  },
+  "ava": {
+    "babel": false,
+    "compileEnhancements": false,
+    "files": [
+      "test/**/*.test.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,test,scripts}/**/*.{js,jsx,ts,tsx}": [
+      "yarn format",
+      "yarn lint",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": 0
+    }
+  },
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ],
+    "ignore": [
+      "**/*.d.ts"
+    ]
+  },
+  "keywords": [
+    "clone",
+    "copy",
+    "deep",
+    "primitive",
+    "serialize",
+    "serialization",
+    "stringify",
+    "json"
+  ]
+}

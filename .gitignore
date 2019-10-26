@@ -1,0 +1,9 @@
+**/*.d.ts
+**/*.map
+**/*.js
+!test/test.commonjs.import.js
+node_modules
+.DS_Store
+*.log
+*.lock
+!commitlint.config.js
