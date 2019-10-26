@@ -26,7 +26,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "ava && node test/test.import.js",
+    "test": "ava && node test/test.commonjs.import.js",
     "format": "prettier-standard '{src,test,scripts}/**/*.{js,jsx,ts,tsx}'",
     "lint": "standardx '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --fix",
     "semantic-release": "semantic-release"
