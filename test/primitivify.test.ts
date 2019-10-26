@@ -68,3 +68,11 @@ test('non-identity transforms', t => {
   )
   clearInterval(complexObj.a.d)
 })
+
+test('onVisit', t => {
+  t.deepEqual(
+    primitivify({ a: () => {} }, v => (typeof v === 'function' ? 'wee' : v)),
+    { a: 'wee' },
+    'allows visit modifiers'
+  )
+})

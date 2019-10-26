@@ -47,6 +47,15 @@ t.deepEqual(
 
 primitivify is immutable--calls return deeply cloned values.
 
+need a _custom_ serializer? use the 2nd argument, `onVisit`, to transform the current value being inspected:
+
+```ts
+primitivify(
+  { a: () => {} },
+  v => typeof v === 'function' ? 'wee' : v)
+)
+// { a: 'wee' }
+
 ### why
 
 generally to decomplect objects and/or arrays.  consinder a simple example:
