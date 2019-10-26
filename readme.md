@@ -1,6 +1,6 @@
 # primitivify
 
-deep copy data keeping only primitives in plain arrays or objects data structures. useful for serializing complex objects where you only care about the raw data contained within.
+deep copy data keeping only primitives in nested data structures. useful for serializing complex objects where you only care about the raw data contained within.
 
 "primitive-ify"
 

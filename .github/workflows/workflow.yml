@@ -1,20 +1,24 @@
-steps:
-- uses: actions/checkout@v1
-- uses: actions/setup-node@v1
-  with:
-    node-version: '12.x'
-- name: install
-  run: yarn
-- name: build
-  run: yarn build
-- name: test
-  run: yarn test
-- name: commitlint
-  uses: wagoid/commitlint-github-action@v1.2.2
-- name: release
-  run: |
-    if [ $GITHUB_REF = "refs/heads/master"]; then
-      npx semantic-release --verbose
-    else
-      echo "skipping release on branch $GITHUB_REF"
-    fi
+name: Main workflow
+on: [push]
+jobs:
+  build:
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: install
+        run: yarn
+      - name: build
+        run: yarn build
+      - name: test
+        run: yarn test
+      - name: commitlint
+        uses: wagoid/commitlint-github-action@v1.2.2
+      - name: release
+        run: |
+          if [ $GITHUB_REF = "refs/heads/master"]; then
+            npx semantic-release --verbose
+          else
+            echo "skipping release on branch $GITHUB_REF"
+          fi
