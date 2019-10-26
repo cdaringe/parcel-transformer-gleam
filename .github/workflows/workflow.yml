@@ -17,9 +17,12 @@ jobs:
       - name: commitlint
         uses: wagoid/commitlint-github-action@v1.2.2
       - name: release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if [[ "$GITHUB_REF" = "refs/heads/master" ]]; then
-            npx semantic-release --verbose
+            GITHUB_TOKEN=$GH_TOKEN npx semantic-release --verbose
           else
             echo "skipping release on branch $GITHUB_REF"
           fi
