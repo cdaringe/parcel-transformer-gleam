@@ -18,7 +18,7 @@ jobs:
         uses: wagoid/commitlint-github-action@v1.2.2
       - name: release
         run: |
-          if [ $GITHUB_REF = "refs/heads/master"]; then
+          if [[ "$GITHUB_REF" = "refs/heads/master" ]]; then
             npx semantic-release --verbose
           else
             echo "skipping release on branch $GITHUB_REF"
