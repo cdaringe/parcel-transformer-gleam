@@ -24,6 +24,7 @@
     "is-plain-object": "^3.0.0",
     "lodash": ">=4"
   },
+  "files": ["src"],
   "scripts": {
     "build": "tsc",
     "test": "ava && node test/test.commonjs.import.js",
