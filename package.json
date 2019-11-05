@@ -10,7 +10,7 @@
     "prettier-standard": "15.0.1",
     "semantic-release-cli": "5.2.3",
     "standardx": "5.0.0",
-    "typescript": "3.6.4",
+    "typescript": "3.7.2",
     "semantic-release": "15.13.30"
   },
   "name": "primitivify",
