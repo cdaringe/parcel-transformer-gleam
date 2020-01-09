@@ -11,7 +11,7 @@
     "semantic-release-cli": "5.2.3",
     "standardx": "5.0.0",
     "typescript": "3.7.4",
-    "semantic-release": "15.14.0"
+    "semantic-release": "16.0.0"
   },
   "name": "primitivify",
   "description": "deep copy data keeping only primitives in plain array or object data structures",
