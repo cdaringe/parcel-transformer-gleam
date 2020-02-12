@@ -5,7 +5,7 @@
     "@typescript-eslint/eslint-plugin": "2.19.2",
     "@typescript-eslint/parser": "2.19.2",
     "ava": "2.4.0",
-    "husky": "4.2.2",
+    "husky": "4.2.3",
     "lint-staged": "10.0.7",
     "prettier-standard": "16.1.0",
     "semantic-release-cli": "5.2.3",
