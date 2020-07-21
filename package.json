@@ -21,7 +21,7 @@
   "author": "cdaringe <cdaringe@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "is-plain-object": "^3.0.0",
+    "is-plain-object": "^4.0.0",
     "lodash": ">=4"
   },
   "files": ["src"],
