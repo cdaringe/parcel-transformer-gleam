@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@types/lodash": "4.14.164",
+    "@types/lodash": "4.14.165",
     "@types/node": "12.12.31",
     "@typescript-eslint/eslint-plugin": "4.6.1",
     "@typescript-eslint/parser": "4.6.1",
