@@ -15,7 +15,7 @@ jobs:
       - name: test
         run: yarn test
       - name: commitlint
-        uses: wagoid/commitlint-github-action@v3.1.1
+        uses: wagoid/commitlint-github-action@v3.1.2
       - name: release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
