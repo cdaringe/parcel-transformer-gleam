@@ -6,7 +6,7 @@
     "@typescript-eslint/parser": "5.2.0",
     "ava": "2.4.0",
     "husky": "7.0.4",
-    "lint-staged": "11.2.4",
+    "lint-staged": "11.2.5",
     "prettier-standard": "16.4.1",
     "semantic-release-cli": "5.4.4",
     "standardx": "7.0.0",
