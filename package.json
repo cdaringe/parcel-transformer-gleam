@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@types/lodash": "4.14.176",
-    "@types/node": "12.20.36",
+    "@types/node": "12.20.37",
     "@typescript-eslint/eslint-plugin": "5.3.1",
     "@typescript-eslint/parser": "5.3.1",
     "ava": "2.4.0",
