@@ -4,7 +4,6 @@ deep copy data keeping only primitives in nested data structures. useful for ser
 
 "primitive-ify"
 
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![TypeScript package](https://img.shields.io/badge/language-typescript-blue)](https://www.typescriptlang.org)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
@@ -17,32 +16,33 @@ deep copy data keeping only primitives in nested data structures. useful for ser
 the best demonstration of the value of this module is exemplified from the tests!
 
 ```ts
-import primitivify from 'primitivify'
-const dummyFn = () => {}
+import primitivify from "primitivify";
+const dummyFn = () => {};
 const complex = {
   dummyFn,
   a: {
     b: {
-      c: setTimeout(() => {}, 0)
+      c: setTimeout(() => {}, 0),
     },
-    d: setInterval(dummyFn, 1e3)
+    d: setInterval(dummyFn, 1e3),
   },
-  b: [dummyFn, 'wee', { e: 'e' }]
-}
+  b: [dummyFn, "wee", { e: "e" }],
+};
 t.deepEqual(
-  { // observe how non-primitive datas are nulled away
+  {
+    // observe how non-primitive datas are nulled away
     dummyFn: null,
     a: {
       b: {
-        c: null
+        c: null,
       },
-      d: null
+      d: null,
     },
-    b: [null, 'wee', { e: 'e' } ]
+    b: [null, "wee", { e: "e" }],
   },
   primitivify(complexObj),
-  'complex'
-)
+  "complex"
+);
 ```
 
 primitivify is immutable--calls return deeply cloned values.
@@ -59,10 +59,10 @@ primitivify(
 
 ### why
 
-generally to decomplect objects and/or arrays.  consinder a simple example:
+generally to decomplect objects and/or arrays. consinder a simple example:
 
 ```js
-JSON.stringify({ usefulData: 'beep', a: setTimeout(() => {},0) })
+JSON.stringify({ usefulData: "beep", a: setTimeout(() => {}, 0) });
 
 /*
 Thrown:
@@ -73,8 +73,7 @@ TypeError: Converting circular structure to JSON
     at JSON.stringify (<anonymous>)
 */
 
-
-JSON.stringify(primitivify({ a: setTimeout(() => {},0) }))
+JSON.stringify(primitivify({ a: setTimeout(() => {}, 0) }));
 /*
 '{"usefulData":"beep","a":null}'
 */

@@ -1,18 +1,4 @@
 {
-  "devDependencies": {
-    "@types/lodash": "4.14.185",
-    "@types/node": "12.20.55",
-    "@typescript-eslint/eslint-plugin": "5.37.0",
-    "@typescript-eslint/parser": "5.37.0",
-    "ava": "2.4.0",
-    "husky": "7.0.4",
-    "lint-staged": "12.5.0",
-    "prettier-standard": "16.4.1",
-    "semantic-release-cli": "5.4.4",
-    "standardx": "7.0.0",
-    "typescript": "4.8.3",
-    "semantic-release": "17.4.7"
-  },
   "name": "primitivify",
   "description": "deep copy data keeping only primitives in plain array or object data structures",
   "version": "0.0.0-development",
@@ -21,34 +7,36 @@
   "author": "cdaringe <cdaringe@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "is-plain-object": "^4.0.0",
-    "lodash": ">=4"
+    "is-plain-object": "^5.0.0",
+    "lodash": "^4.17.21"
   },
-  "files": ["src"],
+  "devDependencies": {
+    "@types/lodash": "4.14.185",
+    "@types/node": "12.20.55",
+    "@typescript-eslint/eslint-plugin": "5.37.0",
+    "@typescript-eslint/parser": "5.37.0",
+    "ava": "^6.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "3.1.1",
+    "semantic-release": "17.4.7",
+    "semantic-release-cli": "5.4.4",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "ava && node test/test.commonjs.import.js",
-    "format": "prettier-standard '{src,test,scripts}/**/*.{js,jsx,ts,tsx}'",
-    "lint": "standardx '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --fix",
+    "format": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --write",
+    "lint": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --check",
     "semantic-release": "semantic-release"
-  },
-  "ava": {
-    "babel": false,
-    "compileEnhancements": false,
-    "files": [
-      "test/**/*.test.js"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "{src,test,scripts}/**/*.{js,jsx,ts,tsx}": [
-      "yarn format",
-      "yarn lint",
+      "npm run format",
+      "npm run lint",
       "git add"
     ]
   },
@@ -56,15 +44,6 @@
     "rules": {
       "no-unused-vars": 0
     }
-  },
-  "standardx": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint/eslint-plugin"
-    ],
-    "ignore": [
-      "**/*.d.ts"
-    ]
   },
   "keywords": [
     "clone",
