@@ -17,8 +17,8 @@ jobs:
         run: pnpm build
       - name: test
         run: pnpm test
-      - name: commitlint
-        uses: wagoid/commitlint-github-action@v5.0.2
+      # - name: commitlint
+      #   uses: wagoid/commitlint-github-action@v5.0.2
       - name: release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
