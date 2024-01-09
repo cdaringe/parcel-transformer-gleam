@@ -17,11 +17,20 @@ test("identity collections", () => {
   const strings = ["a", "b", "c"];
   const complex = [1, "2", { c: { d: [4, 5, { e: { f: 2 } }] } }];
   const obj = { a: 1, b: undefined, c: -1 };
-  assert.deepStrictEqual(empty, primitivify(empty), "empty");
-  assert.deepStrictEqual(numbers, primitivify(numbers), "numbers");
-  assert.deepStrictEqual(strings, primitivify(strings), "strings");
-  assert.deepStrictEqual(complex, primitivify(complex), "complex");
-  assert.deepStrictEqual(obj, primitivify(obj), "obj");
+  class Foo {
+    a = 1;
+    b = 2;
+  }
+
+  assert.deepStrictEqual(primitivify(empty), empty, "empty");
+  assert.deepStrictEqual(primitivify(numbers), numbers, "numbers");
+  assert.deepStrictEqual(primitivify(strings), strings, "strings");
+  assert.deepStrictEqual(primitivify(complex), complex, "complex");
+  assert.deepStrictEqual(primitivify(obj), obj, "obj");
+  assert.deepStrictEqual(primitivify({ a: 1, b: new Foo() }), {
+    a: 1,
+    b: null,
+  });
 });
 
 test("non-identity transforms", (t) => {
