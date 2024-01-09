@@ -11,6 +11,8 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@commitlint/cli": "18.4.4",
+    "@commitlint/config-conventional": "18.4.4",
     "@types/lodash": "4.14.185",
     "@types/node": "12.20.55",
     "@typescript-eslint/eslint-plugin": "5.37.0",
@@ -36,8 +38,7 @@
   "lint-staged": {
     "{src,test,scripts}/**/*.{js,jsx,ts,tsx}": [
       "npm run format",
-      "npm run lint",
-      "git add"
+      "npm run lint"
     ]
   },
   "eslintConfig": {
