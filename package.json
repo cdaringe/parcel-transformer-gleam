@@ -14,15 +14,15 @@
     "@commitlint/cli": "18.4.4",
     "@commitlint/config-conventional": "18.4.4",
     "@types/lodash": "4.14.185",
-    "@types/node": "12.20.55",
+    "@types/node": "20.10.8",
     "@typescript-eslint/eslint-plugin": "5.37.0",
     "@typescript-eslint/parser": "5.37.0",
-    "ava": "^6.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "3.1.1",
     "semantic-release": "17.4.7",
     "semantic-release-cli": "5.4.4",
+    "ts-node": "10.9.2",
     "typescript": "^5.3.3"
   },
   "files": [
@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "ava && node test/test.commonjs.import.js",
+    "test": "node -r 'ts-node/register' test/primitivify.test.ts",
     "format": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --write",
     "lint": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --check",
     "semantic-release": "semantic-release"

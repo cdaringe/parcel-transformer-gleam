@@ -7,13 +7,16 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
+          node-version: "20.x"
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: install
-        run: yarn
+        run: pnpm install
       - name: build
-        run: yarn build
+        run: pnpm build
       - name: test
-        run: yarn test
+        run: pnpm test
       - name: commitlint
         uses: wagoid/commitlint-github-action@v5.0.2
       - name: release
