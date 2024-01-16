@@ -27,7 +27,7 @@
   "scripts": {
     "build": "tsc",
     "test_": "node -r 'ts-node/register' test/test.ts",
-    "test": "node -r 'ts-node/register' test/test.ts && parcel build index.html",
+    "test": "mv package.json package.json.bak && mv package.parcel.json package.json && parcel build index.html && mv package.json package.parcel.json && mv package.json.bak package.json",
     "format": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --write",
     "lint": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --check",
     "semantic-release": "semantic-release"
