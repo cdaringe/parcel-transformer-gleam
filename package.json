@@ -1,23 +1,21 @@
 {
-  "name": "primitivify",
-  "description": "deep copy data keeping only primitives in plain array or object data structures",
+  "name": "parcel-transformer-gleam",
+  "description": "parcel transformer for gleam",
   "version": "0.0.0-development",
-  "main": "src/index.js",
-  "repository": "git@github.com:cdaringe/primitivify.git",
+  "main": "dist/index.js",
+  "repository": "git@github.com:cdaringe/parcel-transformer-gleam.git",
   "author": "cdaringe <cdaringe@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "is-plain-object": "^5.0.0",
-    "lodash": "^4.17.21"
-  },
   "devDependencies": {
     "@commitlint/cli": "18.4.4",
     "@commitlint/config-conventional": "18.4.4",
-    "@types/lodash": "4.14.185",
+    "@parcel/config-default": "2.11.0",
+    "@parcel/plugin": "2.11.0",
     "@types/node": "20.11.3",
-    "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
+    "parcel": "2.11.0",
     "prettier": "3.2.2",
+    "process": "^0.11.10",
     "semantic-release": "23.0.0",
     "semantic-release-cli": "5.4.6",
     "ts-node": "10.9.2",
@@ -28,7 +26,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "node -r 'ts-node/register' test/primitivify.test.ts",
+    "test_": "node -r 'ts-node/register' test/test.ts",
+    "test": "node -r 'ts-node/register' test/test.ts && parcel build index.html",
     "format": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --write",
     "lint": "prettier '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --check",
     "semantic-release": "semantic-release"
@@ -53,5 +52,8 @@
     "serialization",
     "stringify",
     "json"
-  ]
+  ],
+  "dependencies": {
+    "toml": "^3.0.0"
+  }
 }

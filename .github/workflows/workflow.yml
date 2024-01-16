@@ -8,15 +8,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "20.9.0"
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
       - name: install
-        run: pnpm install
+        run: npm run install
       - name: build
-        run: pnpm build
+        run: npm run build
       - name: test
-        run: pnpm test
+        run: npm run test
       # - name: commitlint
       #   uses: wagoid/commitlint-github-action@v5.0.2
       - name: release

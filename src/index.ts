@@ -1,22 +1,45 @@
-import cloneDeepWith from "lodash/cloneDeepWith";
-import { isPlainObject } from "is-plain-object";
+import { Transformer } from "@parcel/plugin";
+import { spawn } from "node:child_process";
+import { join, relative, sep } from "node:path";
+import { readFile } from "node:fs/promises";
+import { parse } from "toml";
+import { ok, equal } from "node:assert";
 
-const isPrimitive = (value: any) =>
-  (typeof value !== "object" && typeof value !== "function") || value === null;
+export default new Transformer({
+  async transform({ asset }) {
+    const baseDirname = asset.fs.cwd();
+    const pkgName = await readFile(join(baseDirname, "gleam.toml")).then(
+      (x) => parse(x.toString()).name
+    );
+    ok(pkgName, "missing gleam.toml pkg name");
 
-export function primitivify<T = {}>(obj: any, onVisit?: (v: any) => any): T {
-  return cloneDeepWith(obj, (_value) => {
-    const value = onVisit ? onVisit(_value) : _value;
-    if (isPrimitive(value)) return value;
-    if (Array.isArray(value)) return value.map((v) => primitivify(v, onVisit));
-    if (isPlainObject(value)) {
-      const next: any = {};
-      for (const key in value) {
-        const subValue = value[key];
-        next[key] = primitivify(subValue, onVisit);
-      }
-      return next;
-    }
-    return null;
-  });
-}
+    const relativeAssetpath = relative(baseDirname, asset.filePath);
+
+    await new Promise<void>((res, rej) =>
+      spawn("gleam", ["build", "-t=javascript"], {
+        stdio: "inherit",
+        cwd: baseDirname,
+      })
+        .addListener("error", rej)
+        .addListener("exit", res)
+        .addListener("close", res)
+    );
+
+    const [srcPart, ...rest] = relativeAssetpath.split(sep);
+    equal(srcPart, "src", `expected path segment of src, got ${srcPart}`);
+
+    const srclessOutRelative = rest.join(sep);
+
+    const outputAssetFilename = join(
+      [...new Array(rest.length)].map(() => "..").join(sep),
+      "build/dev/javascript",
+      pkgName,
+      srclessOutRelative.replace(/gleam$/, "mjs")
+    );
+
+    asset.setCode(`import { main } from "${outputAssetFilename}"; main()`);
+    asset.type = "js";
+
+    return [asset];
+  },
+});
