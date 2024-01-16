@@ -44,14 +44,11 @@
     }
   },
   "keywords": [
-    "clone",
-    "copy",
-    "deep",
-    "primitive",
-    "serialize",
-    "serialization",
-    "stringify",
-    "json"
+    "parcel",
+    "parcel-bundler",
+    "bundler",
+    "gleam",
+    "gleam-lang"
   ],
   "dependencies": {
     "toml": "^3.0.0"
